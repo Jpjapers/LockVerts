@@ -62,8 +62,12 @@ global KeepVerticesLockedRollout = rollout KeepVerticesLockedRollout "Lock Verti
                 polyOp.setVert obj lockedVertices[i] originalPositions[i]
             )
 
+            -- Re-select locked vertices
+            polyOp.setVertSelection obj (lockedVertices as bitArray)
+
             update obj
             format "Subdivision applied while keeping vertices locked.\n"
+
         ) else (
             messageBox "Ensure the object is an Editable Poly and vertices are locked."
         )
